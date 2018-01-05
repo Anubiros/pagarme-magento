@@ -301,6 +301,8 @@ class PagarMe_CreditCard_Model_Creditcard extends Mage_Payment_Model_Method_Abst
 
             Mage::throwException($response);
         }
+        
+        $this->capture($payment, $amount);
 
         return $this;
     }
