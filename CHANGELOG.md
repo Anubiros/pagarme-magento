@@ -12,11 +12,16 @@ e esse projeto adere ao [Semantic Versioning](http://semver.org/spec/v2
 - Compras parceladas com juros no checkout transparente
 - Compras com boleto
 
+## [3.3.0] - 2018-01-19
+## [ADDED]
+- Configuração de juros em compras parceladas. Inclui 'parcelas sem juros',
+'juros' (am) e número máximo de parcelas.
+
 ## [3.2.0] - 2018-01-02
 ## [ADDED]
-- Configuração para limite de parcelas durante uma compra via cartão de 
+- Configuração para limite de parcelas durante uma compra via cartão de
 crédito no checkout transparente
-- Exibição do limite de parcelas no frontend para compras via cartão de 
+- Exibição do limite de parcelas no frontend para compras via cartão de
 crédito no checkout transparente
 
 ## [3.1.0] - 2018-01-02
