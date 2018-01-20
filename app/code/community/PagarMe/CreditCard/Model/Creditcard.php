@@ -1,4 +1,6 @@
 <?php
+use \PagarMe\Sdk\Card\Card;
+use \PagarMe\Sdk\Customer\Customer;
 use \PagarMe\Sdk\PagarMe as PagarMeSdk;
 use PagarMe_CreditCard_Model_Exception_InvalidInstallments as InvalidInstallmentsException;
 use PagarMe_CreditCard_Model_Exception_GenerateCard as GenerateCardException;
@@ -194,8 +196,8 @@ class PagarMe_CreditCard_Model_Creditcard extends Mage_Payment_Model_Method_Abst
      * @return self
      */
     public function createTransaction(
-        \PagarMe\Sdk\Card\Card $card,
-        \PagarMe\Sdk\Customer\Customer $customer,
+        Card $card,
+        Customer $customer,
         $installments = 1,
         $capture = false
     ) {
@@ -265,16 +267,12 @@ class PagarMe_CreditCard_Model_Creditcard extends Mage_Payment_Model_Method_Abst
             $customerPagarMe = $this->pagarmeCoreHelper
                 ->buildCustomer($customer);
 
-            $this->transaction = $this->sdk
-                ->transaction()
-                ->creditCardTransaction(
-                    $this->pagarmeCoreHelper
-                        ->parseAmountToInteger($quote->getGrandTotal()),
-                    $card,
-                    $customerPagarMe,
-                    $installments,
-                    false
-                );
+            $this->createTransaction(
+                $card,
+                $customerPagarMe,
+                $installments,
+                true
+            );
             $this->checkInstallments($installments);
 
             $order = $payment->getOrder();
